@@ -39,7 +39,16 @@ pub fn exist_dir(path: &Path) -> bool {
     }
 }
 
-pub fn get_output_dir() -> PathBuf {
+
+pub fn get_new_file_path(original_file_path: &PathBuf) -> PathBuf {
+    let output_dir = get_output_dir();
+    if !exist_dir(&output_dir) {
+        fs::create_dir_all(&output_dir).unwrap();
+    }
+    output_dir.join(Path::new(&original_file_path.file_name().unwrap()))
+}
+
+fn get_output_dir() -> PathBuf {
     if let Some(smartnotes_out) = var_os("SMARTNOTES_OUT") {
         Path::new(&smartnotes_out).to_path_buf()
     } else {
