@@ -37,6 +37,8 @@ This command will compile the project and generate the executable binary file in
 target/release/smartnotes /path/to/folder
 ```
 The tool will start running as a daemon and continuously watch the specified folder. When a file is added or modified, smartnotes will send it to the OpenAI API for processing. The resulting modified file will be saved in the ~/notes/ directory (or the path specified by the SMARTNOTES_OUT environment variable).
+
+If you want to add any additional instructions for AI, write them in a line starting with @ai.
 ## Stopping SmartNotes
 To stop the smartnotes tool, you can use the following command in the Fish shell:
 
