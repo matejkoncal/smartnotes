@@ -8,7 +8,7 @@ pub async fn transform_to_md(text: &str) -> String {
 
     let template_message = ChatCompletionRequestMessageArgs::default()
         .role(Role::System)
-        .content("V sprave dostanes poznamky. Naformatuj ich a vrat vo formate markdown. Zachovaj jazyk v ktorom poznamky su!")
+        .content("V sprave dostanes poznamky. Naformatuj ich a vrat vo formate markdown. Zachovaj jazyk v ktorom poznamky su! Ak riadok v poznamkach zacina @ai vnimaj to ako pokyny pre formatovanie. Riad sa nimi ale nezahrn ich do vysledneho suboru.")
         .build()
         .unwrap();
 
