@@ -16,7 +16,7 @@ pub fn debounce(
     loop {
         let event = rx.recv().unwrap().unwrap();
         if let Ok(metadata) = fs::metadata(event.paths.first().unwrap()) {
-            if event.kind.is_create() && metadata.is_file() {
+            if event.kind.is_modify() && metadata.is_file() {
                 if SystemTime::now() > last_event_time.checked_add(Duration::from_secs(1)).unwrap()
                 {
                     handler(event.paths.first().unwrap());
